@@ -1,0 +1,4 @@
+eclipse.preferences.version=1
+validator.Checked=WebRoot/META-INF/context.xml,WebRoot/js/jquery-1.6.2.min.js
+validator.Revalidate=true
+validator.Unchecked=

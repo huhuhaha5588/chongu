@@ -15,7 +15,7 @@
 
 <bean class="org.springframework.jndi.JndiObjectFactoryBean" id="dataSource">
 	<property name="jndiName">
-		<value>java:comp/env/jdbc/TNA</value>
+		<value>java:comp/env/jdbc/chongu</value>
 	</property>
 </bean>
 
@@ -28,8 +28,8 @@
 	<property name="hibernateProperties">
 		<props>
 			<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
-			<prop key="hibernate.show_sql">false</prop>
-			<prop key="hibernate.format_sql">false</prop>
+			<prop key="hibernate.show_sql">true</prop>
+			<prop key="hibernate.format_sql">true</prop>
 		</props>
 	</property>
 	<property name="packagesToScan">

@@ -1,11 +1,15 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="com.oracle.tna.domain.AdminUser"%>
+<%@page import="com.oracle.tna.web.AdminLoginFilter"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
 
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+AdminUser adminUser = (AdminUser)session.getAttribute(AdminLoginFilter.ATTR_ADMINUSER); 
+pageContext.setAttribute("adminUser", adminUser);
 %>
 
 <html>
@@ -25,7 +29,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <!--<img src="/chinapost/Public/assets/img/top.png">-->
     </div>
 
-    <div class="dl-log">欢迎您，<span class="dl-log-user">root</span><a href="/chinapost/index.php?m=Public&a=logout" title="退出系统" class="dl-log-quit">[退出]</a>
+    <div class="dl-log">欢迎您，<span class="dl-log-user">${adminUser.adminUserName}</span><a href="admin/AdminLogout.action" title="退出系统" class="dl-log-quit">[退出]</a>
     </div>
 </div>
 <div class="content">
@@ -47,7 +51,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="assets/js/config-min.js"></script>
 <script>
     BUI.use('common/main',function(){
-        var config = [{id:'1',menu:[{text:'系统管理',items:[{id:'12',text:'机构管理',href:'Node/index.html'},{id:'3',text:'角色管理',href:'Role/index.html'},{id:'4',text:'用户管理',href:'User/index.html'},{id:'6',text:'菜单管理',href:'Menu/index.html'}]}]},{id:'7',homePage : '9',menu:[{text:'业务管理',items:[{id:'9',text:'查询业务',href:'Node/index.html'}]}]}];
+        var config = [{id:'1',menu:
+        				[{text:'系统管理',items:
+        					[
+					        	{id:'12',text:'机构管理',href:'admin/index.jsp'},
+					        	{id:'3',text:'角色管理',href:'admin/index2.jsp'},
+					        	{id:'4',text:'用户管理',href:'User/index.html'},
+					        	{id:'6',text:'菜单管理',href:'Menu/index.html'}
+				        	]
+	        			}]
+	        			},
+	        			{id:'7',homePage : '9',menu:
+		        			[{text:'业务管理',items:
+		        			[
+		        				{id:'9',text:'查询业务',href:'Node/index.html'}
+		        			]
+	        			}]
+	        			}];
         new PageUtil.MainPage({
             modulesConfig : config
         });

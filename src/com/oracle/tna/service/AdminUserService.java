@@ -15,7 +15,7 @@ import com.oracle.tna.exception.AdminUserException;
 
 @Service
 @Scope("singleton")
-public class AdminService {
+public class AdminUserService {
 	
 	@Resource
     public AdminDAO adminDAO;

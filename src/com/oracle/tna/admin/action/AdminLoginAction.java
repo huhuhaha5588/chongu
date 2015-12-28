@@ -18,7 +18,7 @@ import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
 import com.opensymphony.xwork2.validator.annotations.ValidatorType;
 import com.oracle.tna.domain.AdminUser;
 import com.oracle.tna.exception.AdminUserException;
-import com.oracle.tna.service.AdminService;
+import com.oracle.tna.service.AdminUserService;
 import com.oracle.tna.web.AdminLoginFilter;
 
 @Namespace(value = "/admin")
@@ -35,7 +35,7 @@ public class AdminLoginAction extends ActionSupport {
 	private String password;
 
 	@Resource
-	private AdminService adminService;
+	private AdminUserService adminService;
 
 	public String getForwardUrl() {
 		return forwardUrl;

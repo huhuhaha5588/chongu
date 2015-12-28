@@ -1,7 +1,9 @@
 package com.oracle.tna.domain;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 
+import javax.management.loading.PrivateClassLoader;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,6 +19,12 @@ public class AdminUser implements Serializable{
 	private int aid;
 	private String adminUserName;
 	private String password;
+	private String name;
+	private String idnum;
+	private String tel;
+	private String mngcom;
+	private String role;
+	private Timestamp lastlogintime; 
 	
 	public AdminUser() {
 		super();
@@ -28,6 +36,56 @@ public class AdminUser implements Serializable{
 		this.adminUserName = adminUserName;
 		this.password = password;
 	}
+	
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getIdnum() {
+		return idnum;
+	}
+
+	public void setIdnum(String idnum) {
+		this.idnum = idnum;
+	}
+
+	public String getTel() {
+		return tel;
+	}
+
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
+
+	public String getMngcom() {
+		return mngcom;
+	}
+
+	public void setMngcom(String mngcom) {
+		this.mngcom = mngcom;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+	public Timestamp getLastlogintime() {
+		return lastlogintime;
+	}
+
+	public void setLastlogintime(Timestamp lastlogintime) {
+		this.lastlogintime = lastlogintime;
+	}
+
 
 	public int getAid() {
 		return aid;

@@ -17,7 +17,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
 import com.opensymphony.xwork2.validator.annotations.ValidatorType;
 import com.oracle.tna.domain.AdminUser;
-import com.oracle.tna.exception.AdminUserLoginException;
+import com.oracle.tna.exception.AdminUserException;
 import com.oracle.tna.service.AdminService;
 import com.oracle.tna.web.AdminLoginFilter;
 
@@ -65,7 +65,8 @@ public class AdminLoginAction extends ActionSupport {
 		AdminUser admin = null;
 		try {
 			admin = adminService.adminUserLogin(adminUserName, password);
-		} catch (AdminUserLoginException e) {
+		} catch (AdminUserException e) {
+			System.out.println("登录失败的一场抛出");
 			this.addActionError(getText("error.login.failure"));/*,new String[] { e.getMessage() }*/
 			return INPUT;
 		}

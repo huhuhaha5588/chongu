@@ -42,7 +42,7 @@ pageContext.setAttribute("adminUser", adminUser);
         </ul>
     </div>
     <ul id="J_NavContent" class="dl-tab-conten">
-
+    
     </ul>
 </div>
 <script type="text/javascript" src="assets/js/jquery-1.8.1.min.js"></script>
@@ -51,7 +51,7 @@ pageContext.setAttribute("adminUser", adminUser);
 <script type="text/javascript" src="assets/js/config-min.js"></script>
 <script>
     BUI.use('common/main',function(){
-        var config = [{id:'1',menu:
+        var config = [{id:'1',homePage : '12',menu:
         				[{text:'系统管理',items:
         					[
 					        	{id:'12',text:'机构管理',href:'admin/index.jsp'},

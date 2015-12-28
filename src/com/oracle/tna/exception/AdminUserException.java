@@ -1,13 +1,13 @@
 package com.oracle.tna.exception;
 
-public class AdminUserLoginException extends Exception {
+public class AdminUserException extends Exception {
 
 	private static final long serialVersionUID = 2970625183016915662L;
 
-	public AdminUserLoginException(Exception e) {
+	public AdminUserException(Exception e) {
         super(e);
     }
-    public AdminUserLoginException(String msg) {
+    public AdminUserException(String msg) {
         super(msg);
     }
 }

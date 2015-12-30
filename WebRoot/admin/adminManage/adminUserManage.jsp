@@ -1,5 +1,6 @@
+<%@page import="com.oracle.tna.domain.AdminUser"%>
 <%@ page import="com.oracle.tna.domain.Item" %>
-<%@ page import="com.oracle.tna.service.UserService"%>
+<%@ page import="com.oracle.tna.service.AdminUserService"%>
 <%@ page import="org.springframework.context.support.AbstractApplicationContext"%>
 <%@ page import="org.springframework.web.context.WebApplicationContext"%>
 <%@ page import="org.springframework.context.ApplicationContext"%>
@@ -12,19 +13,20 @@
 %>
 <%
 	AbstractApplicationContext context= (AbstractApplicationContext)application.getAttribute(WebApplicationContext.ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE);
-	UserService userService = (UserService)context.getBean("userService");
-
+	AdminUserService adminUserService = (AdminUserService)context.getBean("adminUserService");
+	List<AdminUser> adminUsers =  adminUserService.getAllAdminUser();
+	request.setAttribute("adminUsers",adminUsers);
  %>
-<c:set var="answer" value="${itemService.getOption()}" />
+<c:set var="adminUsers" value="${adminUsers}" ></c:set>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <base href="<%=basePath%>">
 <html>
 <head>
     <title></title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="Css/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="Css/bootstrap-responsive.css" />
-    <link rel="stylesheet" type="text/css" href="Css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
     <script type="text/javascript" src="Js/jquery.js"></script>
     <script type="text/javascript" src="Js/jquery.sorted.js"></script>
     <script type="text/javascript" src="Js/bootstrap.js"></script>
@@ -69,12 +71,12 @@
         <th>操作</th>
     </tr>
     </thead>
-    	 <c:forEach items="${userService.allUsers}" var= "user">
+    	 <c:forEach items="${adminUsers}" var="adminUser">
 	     <tr>
-            <td>${user.uid}</td>
-			<td>${user.username} </td>
-			<td>${user.name} </td>
-            <td>${user.lastLoginTime} }</td>
+            <td>${adminUser.aid}</td>
+			<td>${adminUser.adminUserName} </td>
+			<td>${adminUser.name} </td>
+            <td>${adminUser.lastlogintime}</td>
             <td>
                 <a href="edit.html">编辑</a>                
             </td>

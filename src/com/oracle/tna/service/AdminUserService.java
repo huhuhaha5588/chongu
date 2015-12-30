@@ -27,10 +27,34 @@ public class AdminUserService {
     }
 	
 	@Transactional(propagation=Propagation.NOT_SUPPORTED)
-    public List<AdminUser> showAdminUser() 
+    public List<AdminUser> getAllAdminUser() 
             throws AdminUserException{
         return adminDAO.getAllAdminUsers();
     }
+	
+	@Transactional(propagation=Propagation.NOT_SUPPORTED)
+    public AdminUser find(String adminUsername) 
+            throws AdminUserException{
+        return adminDAO.find(adminUsername);
+    }
+	
+	@Transactional(propagation=Propagation.NOT_SUPPORTED)
+    public List<AdminUser> search(String adminUsername) 
+            throws AdminUserException{
+        return adminDAO.search(adminUsername);
+    }
+	
+	public static void main(String[] argS){
+		AdminUserService adminUserService = new AdminUserService();
+		try {
+			List<AdminUser> admins = adminUserService.getAllAdminUser();
+			System.out.println(admins.toString());
+		} catch (AdminUserException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 	
 	
 }

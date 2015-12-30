@@ -38,6 +38,20 @@ public class AdminUser implements Serializable{
 	}
 	
 	
+	
+	public AdminUser(int aid, String adminUserName, String password,
+			String name, String idnum, String tel, String mngcom, String role) {
+		super();
+		this.aid = aid;
+		this.adminUserName = adminUserName;
+		this.password = password;
+		this.name = name;
+		this.idnum = idnum;
+		this.tel = tel;
+		this.mngcom = mngcom;
+		this.role = role;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -110,4 +124,15 @@ public class AdminUser implements Serializable{
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	@Override
+	public String toString() {
+		return String
+				.format("AdminUser [aid=%s, adminUserName=%s, password=%s, name=%s, idnum=%s, tel=%s, mngcom=%s, role=%s, lastlogintime=%s]",
+						aid, adminUserName, password, name, idnum, tel, mngcom,
+						role, lastlogintime);
+	}
+	
+	
+	
 }

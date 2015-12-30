@@ -16,7 +16,7 @@ pageContext.setAttribute("adminUser", adminUser);
     <head>
     	<base href="<%= basePath %>" />
         <title>${pageTitle}</title>
-        <link href='<c:url value="/css/style.css"/>' rel="stylesheet" type="text/css" />
+        <link href='<c:url value="css/style.css"/>' rel="stylesheet" type="text/css" />
         <script type="text/javascript" src='style/jquery-2.1.3.min.js'></script>
     	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     	<link href="assets/css/dpl-min.css" rel="stylesheet" type="text/css" />
@@ -54,10 +54,10 @@ pageContext.setAttribute("adminUser", adminUser);
         var config = [{id:'1',homePage : '12',menu:
         				[{text:'系统管理',items:
         					[
-					        	{id:'12',text:'机构管理',href:'admin/index.jsp'},
-					        	{id:'3',text:'角色管理',href:'admin/index2.jsp'},
-					        	{id:'4',text:'用户管理',href:'User/index.html'},
-					        	{id:'6',text:'菜单管理',href:'Menu/index.html'}
+					        	{id:'12',text:'机构管理',href:'admin/adminManage/orgManage.jsp'},
+					        	{id:'3',text:'角色管理',href:'admin/adminManage/roleManage.jsp'},
+					        	{id:'4',text:'用户管理',href:'admin/adminManage/adminUserManage.jsp'},
+					        	{id:'6',text:'菜单管理',href:'admin/adminManage/menuManage.jsp'}
 				        	]
 	        			}]
 	        			},

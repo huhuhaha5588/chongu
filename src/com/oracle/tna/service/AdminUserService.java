@@ -1,5 +1,7 @@
 package com.oracle.tna.service;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -23,7 +25,13 @@ public class AdminUserService {
 	@Transactional(propagation=Propagation.NOT_SUPPORTED)
     public AdminUser adminUserLogin(String adminUserName, String password) 
             throws AdminUserException{
-        return adminDAO.retrieve(adminUserName, password);
+			AdminUser adminUser=null;
+			
+				adminUser= adminDAO.retrieve(adminUserName,password);
+				adminUser.setLastlogintime(new Timestamp(new Date().getTime()));
+				adminDAO.update(adminUser);
+
+        return adminUser;
     }
 	
 	@Transactional(propagation=Propagation.NOT_SUPPORTED)
@@ -43,6 +51,13 @@ public class AdminUserService {
             throws AdminUserException{
         return adminDAO.search(adminUsername);
     }
+	
+	@Transactional(propagation=Propagation.NOT_SUPPORTED)
+    public void update(AdminUser adminUser) 
+            throws AdminUserException{
+		adminDAO.update(adminUser);
+    }
+	
 	
 	public static void main(String[] argS){
 		AdminUserService adminUserService = new AdminUserService();

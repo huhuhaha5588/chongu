@@ -14,7 +14,7 @@
 <%
 	AbstractApplicationContext context= (AbstractApplicationContext)application.getAttribute(WebApplicationContext.ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE);
 	AdminUserService adminUserService = (AdminUserService)context.getBean("adminUserService");
-	List<AdminUser> adminUsers =  adminUserService.getAllAdminUser();
+	List<AdminUser> adminUsers =  adminUserService.search(request.getParameter("userName"));
 	request.setAttribute("adminUsers",adminUsers);
  %>
 <c:set var="adminUsers" value="${adminUsers}" ></c:set>
@@ -22,16 +22,16 @@
 <base href="<%=basePath%>">
 <html>
 <head>
-    <title></title>
+    <title>用户管理</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css" />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
-    <script type="text/javascript" src="Js/jquery.js"></script>
-    <script type="text/javascript" src="Js/jquery.sorted.js"></script>
-    <script type="text/javascript" src="Js/bootstrap.js"></script>
-    <script type="text/javascript" src="Js/ckform.js"></script>
-    <script type="text/javascript" src="Js/common.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery.sorted.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/ckform.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
 
  
 
@@ -56,9 +56,9 @@
     </style>
 </head>
 <body>
-<form class="form-inline definewidth m20" action="index.html" method="get">    
+<form class="form-inline definewidth m20" action="admin/AddAdminUser.action" method="get">    
     用户名称：
-    <input type="text" name="username" id="username"class="abc input-default" placeholder="" value="">&nbsp;&nbsp;  
+    <input type="text" name="userName" id="userName"class="abc input-default" placeholder="请输入要查询的用户名" value="">&nbsp;&nbsp;  
     <button type="submit" class="btn btn-primary">查询</button>&nbsp;&nbsp; <button type="button" class="btn btn-success" id="addnew">新增用户</button>
 </form>
 <table class="table table-bordered table-hover definewidth m10">

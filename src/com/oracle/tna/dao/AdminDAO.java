@@ -89,9 +89,9 @@ public class AdminDAO {
 	public List<AdminUser> search(String adminUsername){
 		List<AdminUser> adminUsers = null;
 		try {
-			
+			String param = "%"+adminUsername+"%";
 			adminUsers = this.hibernateTemplate.find(SEARCHADMINNAME,
-					new Object[] {"%"+adminUsername+"%"});
+					new Object[] {param});
 			
 		} catch (Exception e) {
 			e.printStackTrace();
